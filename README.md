@@ -10,18 +10,18 @@
 - 资源承载力可根据业务发展需要随时弹性扩展。  
 
 ## 截图
+ ![image](https://user-images.githubusercontent.com/89879893/154790716-aa8ab000-66a1-4da7-a175-3d8e8e09bf42.png)
+![image](https://user-images.githubusercontent.com/89879893/154790719-5c799b83-50d1-452b-8d57-8335635cac18.png)
+![image](https://user-images.githubusercontent.com/89879893/154790722-c9179bcd-a857-40fd-87c2-50d1357def3c.png)
+![image](https://user-images.githubusercontent.com/89879893/154790726-12a575b2-e137-46f0-a030-fe533f141634.png)
+![image](https://user-images.githubusercontent.com/89879893/154790728-cf0c6d1b-4e9e-4e6e-8cec-fd5c51972224.png)
+![image](https://user-images.githubusercontent.com/89879893/154790733-fe96f794-28c1-4228-a0f7-5847a4f0b9d5.png)
+![image](https://user-images.githubusercontent.com/89879893/154790736-643926de-208e-418c-8231-9fb5e19b77df.png)
+![image](https://user-images.githubusercontent.com/89879893/154790741-8aa07d56-696a-4429-a0ae-3e976eb3fc2f.png)
+![image](https://user-images.githubusercontent.com/89879893/154790745-85d03df0-9b4b-45b7-b46f-128b5ef4a304.png)
+![image](https://user-images.githubusercontent.com/89879893/154790748-ff087924-a1f8-46bb-a891-4a0f22a22ccf.png)
+![image](https://user-images.githubusercontent.com/89879893/154790752-c68cb2bc-3fbd-45d8-8496-8fa89d320a49.png)
 
-![输入图片说明](demo/1645253302(1).png) 
-![输入图片说明](demo/1645253319(1).png)
-![输入图片说明](demo/1645253344(1).png)
-![输入图片说明](demo/1645253359(1).png)
-![输入图片说明](demo/image.png)
-![输入图片说明](demo/1645253415(1).jpg)
-![输入图片说明](demo/1645253431(1).png)
-![输入图片说明](demo/1645253445(1).png)
-![输入图片说明](demo/1645253466(1).png)
-![输入图片说明](demo/1645253487(1).png)
-![输入图片说明](demo/1645253509(1).png)
-![输入图片说明](demo/1645253534(1).jpg)
+![image](https://user-images.githubusercontent.com/89879893/154790754-17defdd4-1285-4517-80e3-acc11e6c3399.png)
 
 ## 演示
