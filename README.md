@@ -1,6 +1,7 @@
 ## 功能介绍 
     
 中小学微校园小程序, 功能包括学校概况，校园资讯，校园风光，德育工作，教师园地，学生天地，校友情深，来访预约，校园活动，采用腾讯提供的小程序云开发解决方案，无须服务器和域名
+![2f7797fe6d6de727d52edac94b3319c](https://user-images.githubusercontent.com/89879893/154796656-1cd61dd4-b28c-4e72-bca4-4c82f354a95d.png)
 
 ## 技术运用
 - 本项目使用微信小程序平台进行开发。
@@ -25,3 +26,4 @@
 ![image](https://user-images.githubusercontent.com/89879893/154790754-17defdd4-1285-4517-80e3-acc11e6c3399.png)
 
 ## 演示
+![2f7797fe6d6de727d52edac94b3319c](https://user-images.githubusercontent.com/89879893/154796656-1cd61dd4-b28c-4e72-bca4-4c82f354a95d.png)
