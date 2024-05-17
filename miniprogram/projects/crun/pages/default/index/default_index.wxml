@@ -1,0 +1,56 @@
+<view class="top">
+	<image mode="widthFix" src="../../../images/home.jpg" class="loading" />
+</view>
+<view class="main">
+
+	<view class="dm" wx:if="{{isLoad&&dmData.length>0}}"> 
+		<view class='group' wx:for="{{ dmData }}" wx:key="index" style="top:{{ item.top }}%; animation: dmAnimation {{ item.time }}s linear {{ index*3 }}s infinite;">
+			<view class='item'>
+				<view class='line'> 
+					<text class='content'>{{ item.title }}</text>
+				</view>
+			</view>
+		</view>
+	</view>
+
+	<view wx:if="{{isLoad}}" class="line-cur"><text class="icon-noticefill text-brown margin-right-xxs"></text>当前有{{cnt}}个需求待接单...</view>
+	<view class="list">
+		<view class="item shadow-project" bindtap="url" data-url="../../mail/index/mail_index">
+			<view class="left">
+				<view class="line1">代取快递</view>
+				<view class="line2">省时省力 更高效</view>
+			</view>
+			<image class="right" mode="aspectFill" src="../../../images/menu/mail.png" />
+		</view>
+		<view class="item shadow-project" bindtap="url" data-url="../../thing/index/thing_index">
+			<view class="left">
+				<view class="line1">代办急事</view>
+				<view class="line2">省时省力 更高效</view>
+			</view>
+			<image class="right" mode="aspectFill" src="../../../images/menu/thing.png" />
+		</view>
+		<view class="item shadow-project" bindtap="url" data-url="../../food/index/food_index">
+			<view class="left">
+				<view class="line1">代买服务</view>
+				<view class="line2">省时省力 更高效</view>
+			</view>
+			<image class="right" mode="aspectFill" src="../../../images/menu/food.png" />
+		</view>
+		<view class="item shadow-project" bindtap="url" data-url="../../follow/index/follow_index">
+			<view class="left">
+				<view class="line1">陪替服务</view>
+				<view class="line2">省时省力 更高效</view>
+			</view>
+			<image class="right" mode="aspectFill" src="../../../images/menu/partner.png" />
+		</view>
+
+
+	</view>
+	<view style="height: 100rpx;"></view>
+</view>
+
+
+<block wx:if="{{skin.IS_SUB}}">
+	<import src="../../tpls/menu_tpl.wxml" />
+	<template is="menuTpl" data="{{curMenu:'home_index',returnHome:false}}" />
+</block>

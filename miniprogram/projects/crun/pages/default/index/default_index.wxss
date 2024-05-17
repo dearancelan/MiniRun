@@ -1,0 +1,140 @@
+@import "../../../style/skin.wxss";
+
+page {
+	background-color: #f8f8f8;
+}
+
+.main {
+	width: 100%;
+	padding: 10rpx 35rpx;
+}
+
+.top {
+	width: 100%;
+}
+
+.top image {
+	width: 100%;
+}
+
+.line-cur {
+	background-color: #f2f2f2;
+	font-size: 24rpx;
+	color: var(--projectCompareColor);
+	width: 100%;
+	border-radius: 30rpx;
+	padding: 16rpx 30rpx;
+	margin-bottom: 10rpx;
+}
+
+.list {
+	position: relative;
+	margin-top: 20rpx;
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0rpx;
+	border-radius: 14rpx;
+}
+
+.list .item {
+	width: calc((100% - 20rpx) / 2);
+	border-radius: 10rpx;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 20rpx 20rpx;
+	margin-bottom: 20rpx;
+	background-color: #fff;
+}
+
+.list .item:nth-child(2n+1) {
+	margin-right: 20rpx;
+}
+
+.list .item .left {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.list .item .left .line1 {
+	font-size: 28rpx;
+	font-weight: bold;
+	color: #333;
+}
+
+.list .item .left .line2 {
+	font-size: 22rpx;
+	color: #aaa;
+	margin-top: 20rpx;
+}
+
+
+.list .item .right {
+	width: 56rpx;
+	height: 56rpx;
+}
+
+/* 弹幕 */
+.dm {
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	height: 250rpx;
+	margin-top: -140rpx;
+}
+
+.dm .group {
+	position: absolute;
+	top: 140rpx;
+	left: 100%;
+	z-index: 10;
+	animation-timing-function: linear;
+	animation-fill-mode: none;
+	transform: translateZ(0);
+	white-space: nowrap;
+	height: 60rpx;
+}
+
+.dm .group .item {
+	display: inline-flex;
+	margin-right: 60rpx;
+	white-space: nowrap;
+}
+
+.dm .group .item .line {
+	display: inline-flex;
+	vertical-align: middle;
+	align-items: center;
+	position: relative;
+	padding: 2rpx 15rpx 2rpx 15rpx;
+	box-sizing: border-box;
+	background: rgba(0, 2, 2, 0.18);
+	border-radius: 25rpx;
+	overflow: hidden;
+	font-size: 24rpx;
+	color: rgba(255, 255, 255, 1);
+}
+
+.dm .group .item .line .content {
+	display: inline-block;
+	max-width: 500rpx;
+	height: 50rpx;
+	line-height: 50rpx;
+	margin-right: 10rpx;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+@keyframes dmAnimation {
+	from {
+		left: 100%;
+	}
+
+	to {
+		left: -100%;
+	}
+}

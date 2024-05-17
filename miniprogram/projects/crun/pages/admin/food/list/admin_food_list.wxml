@@ -1,0 +1,102 @@
+<block wx:if="{{isAdmin&&isLoad}}">
+	<cmpt-comm-list source='admin' type="admin-food-list" search="{{search||''}}" _menus="{{sortMenus}}" _items="{{sortItems}}" route="admin/food_list" pulldownType="{{['modal','modal','modal']}}" sortMenusDefaultIndex="0" topBottom="50" placeholder="搜索" bind:list="bindCommListCmpt">
+
+		<view slot="searchEnd">
+			<button bindtap="url" data-url="../export/admin_food_export" class="btn radius bg-admin text-white margin-right-s"><text class="icon-down margin-right-xxs"></text>导出数据</button>
+		</view>
+		<!-- List Begin -->
+		<view class="admin-comm-list">
+			<view wx:if="{{dataList && dataList.total }}" class="load text-grey">共有{{dataList.total}}条符合条件记录</view>
+
+			<view class="item" wx:for="{{dataList.list}}" wx:key="key">
+				<view class="no">{{index+1}}</view>
+				<view class="header">
+					<view class="left text-cut"><text wx:if="{{item.FOOD_ORDER==0}}" class="text-black margin-right-xxs" style="font-weight:normal;font-size:24rpx">[置顶]</text>  {{item.FOOD_OBJ.title}}
+					</view>
+					<view class="right">
+						<text wx:if="{{item.status=='已完成'}}" class="text-green">「{{item.status}}」</text> 
+						<text wx:elif="{{item.status=='已接单'}}" class="text-blue">「{{item.status}}」</text> 
+						<text wx:elif="{{item.status=='已过期'}}" class="text-grey">「{{item.status}}」</text> 
+						<text wx:else class="text-orange">「{{item.status}}」</text> 
+					</view>
+				</view>
+
+				<view class="info">
+					<view wx:if="{{cateIdOptions.length>1}}" class="info-item">
+						<view class="title">分类</view>
+						<view class="mao">：</view>
+						<view class="content">『{{item.FOOD_CATE_NAME}}』</view>
+					</view>
+					
+					<view class="info-item" bind:tap="url" data-url="../../user/detail/admin_user_detail?id={{item.FOOD_USER_ID}}">
+						<view class="title">发单人</view>
+						<view class="mao">：</view>
+						<view class="content">{{item.FOOD_OBJ.poster}} ({{item.user.USER_NAME}}) <text class="margin-left-s text-grey">[详情]</text></view>
+					</view>
+
+					<view class="info-item">
+						<view class="title">有效期</view>
+						<view class="mao">：</view>
+						<view class="content">{{item.end}}</view>
+					</view>
+
+					<view wx:if="{{item.FOOD_STATUS>0&&item.FOOD_ACCEPT_USER_ID}}" class="info-item" bind:tap="url" data-url="../../user/detail/admin_user_detail?id={{item.FOOD_ACCEPT_USER_ID}}">
+						<view class="title">接单人</view>
+						<view class="mao">：</view>
+						<view class="content">{{item.FOOD_ACCEPT_USER_NAME}}<text class="margin-left-s text-grey">[详情]</text></view>
+					</view>
+
+					<view wx:if="{{item.FOOD_STATUS>=1&&item.FOOD_ACCEPT_USER_ID}}" class="info-item">
+						<view class="title">接单时间</view>
+						<view class="mao">：</view>
+						<view class="content">{{item.FOOD_ACCEPT_TIME}}</view>
+					</view>
+
+					<view wx:if="{{item.FOOD_STATUS==9}}" class="info-item">
+						<view class="title">完成时间</view>
+						<view class="mao">：</view>
+						<view class="content">{{item.FOOD_OVER_TIME}}</view>
+					</view>
+
+					<view class="info-item">
+						<view class="title">排序号</view>
+						<view class="mao">：</view>
+						<view class="content">{{item.FOOD_ORDER}} <text class="margin-left-xxs text-grey">(小的先显示)</text></view>
+					</view>
+
+					<view class="info-item">
+						<view class="title">数据</view>
+						<view class="mao">：</view>
+						<view class="content">浏览{{item.FOOD_VIEW_CNT}}，收藏{{item.FOOD_FAV_CNT}}</view>
+					</view> 
+
+					<view class="info-item">
+						<view class="title">创建</view>
+						<view class="mao">：</view>
+						<view class="content">{{item.FOOD_ADD_TIME}}</view>
+					</view>
+
+					<view class="oprt"> 
+
+						<view bindtap="bindStatusMoreTap" data-id="{{item._id}}" class="btn margin-right-s">状态管理</view>
+					 
+						<view data-idx="{{index}}"  bindtap="bindMoreTap" data-id="{{item._id}}" data-idx="{{index}}" data-qr="{{item.FOOD_QR}}" data-title="{{item.FOOD_TITLE}}" class="btn margin-right-s">更多操作</view> 
+						
+						<view bindtap="url"  data-url="../../preview/admin_preview?type=food&id={{item._id}}" class="btn margin-right-s">查看详情</view>
+
+					</view>
+				</view>
+			</view>
+
+		</view>
+		<!-- List END -->
+
+		<!--load begin-->
+		<import src="../../../../../../tpls/public/list_load_tpl.wxml" />
+		<template is="listLoadTpl" data="{{dataList,skin:'text-grey'}}" />
+		<!--load end-->
+
+
+	</cmpt-comm-list>
+
+</block>

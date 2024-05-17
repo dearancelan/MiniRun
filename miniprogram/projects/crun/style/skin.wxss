@@ -1,0 +1,160 @@
+@import "../../../cmpts/public/calendar/calendar_comm/din.wxss";
+
+page {
+	background-color: #f8f8f8;
+
+	--projectColor: #FED202;
+	--projectColorLight: #FED202;
+	--projectCompareColor: #6A3906;
+
+	/*#### 父组件日历颜色定义*/
+	/* 整体颜色 */
+	--calendarPageColor: #fff;
+	/* 加重颜色*/
+	--calendarMainColor: #FED202 !important;
+	/* 加重的亮颜色 用于选中日期的数据小圆点 */
+	--calendarLightColor: #FED202;
+}
+
+.bg-admin {
+	background-color: #2499f2;
+}
+
+.text-project {
+	color: var(--projectColor) !important;
+}
+
+.bg-project {
+	background-color: var(--projectColor) !important;
+	color: var(--projectCompareColor) !important;
+}
+
+.bg-project.light {
+	color: var(--projectColor) !important;
+	background-color: var(--projectColorLight) !important;
+}
+
+.border-project {
+	border-color: var(--projectColor) !important;
+}
+
+.menu-project {
+	color: var(--projectCompareColor) !important;
+}
+
+.tabs .tab {
+	font-size: 28rpx !important;
+}
+
+.tabs .cur {
+	color: var(--projectCompareColor) !important;
+}
+
+.tabs .tab-menu.cur:after {
+	background-color: var(--projectColor) !important;
+}
+
+.load-project {
+	color: #999 !important;
+}
+
+.padding-project {
+	padding-left: 25rpx !important;
+	padding-right: 25rpx !important;
+}
+
+.btn-project {
+	line-height: 80rpx;
+	height: 80rpx;
+	color: var(--projectCompareColor);
+	background-color: var(--projectColor);
+}
+
+.phone-button {
+	color: var(--projectColor) !important;
+}
+
+.shadow-project {
+	box-shadow: 6rpx 6rpx 20rpx rgba(216, 220, 223, 0.5);
+}
+
+.card-project,
+.main .list .item.card-project,
+.down .comm-list.menu.card-project,
+.article-box .article.card-project,
+.text-pic-list-box .item.card-project,
+.info-list-box .item.card-project,
+.main-content .content.card-project,
+.meet-list-box .item.card-project,
+.form-box.card-project,
+.bar .search-form {
+	border-radius: 30rpx !important;
+}
+
+.up-project {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+.up-project image {
+	padding: 0;
+	width: 100%;
+	margin: 0;
+}
+
+.my-icon-project {
+	color: var(--projectCompareColor);
+	font-size: 34rpx;
+}
+
+
+.meet-list-box {
+	padding: 20rpx 30rpx 30rpx 30rpx;
+}
+
+.title-project {
+	color: var(--projectTextColor) !important;
+}
+
+.bar .search-form {
+	background-color: #f6f7fb;
+}
+
+.tabs .tab-menu.cur:after {
+	border-radius: unset !important;
+	background-color: unset !important;
+	transform: unset !important;
+	border-top-left-radius: unset !important;
+	border-top-right-radius: unset !important;
+	border-bottom-right-radius: unset !important;
+	border-bottom-left-radius: unset !important;
+
+	content: '' !important;
+	width: 30rpx !important;
+	height: 30rpx !important;
+	position: absolute !important;
+	left: calc(50% - 15rpx) !important;
+	bottom: 0rpx !important;
+	border-top: 6rpx solid var(--projectColorLight) !important;
+	border-right: 6rpx solid var(--projectColorLight) !important;
+	border-top-right-radius: 100% !important;
+	transform: rotate(-225deg) !important;
+	border-top-width: 6rpx !important;
+	border-top-style: solid !important;
+	border-top-color: var(--projectColorLight) !important;
+	border-right-width: 6rpx !important;
+	border-right-style: solid !important;
+	border-right-color: var(--projectColorLight) !important;
+}
+
+.cmpt-biz-detail-mode2 .share,
+.cmpt-biz-detail-mode2 .fav {
+	color: var(--projectCompareColor) !important;
+}
+
+.list .item .line-title .left {
+	font-size: 36rpx; 
+	font-family: 'din';
+	font-weight: normal!important;
+}

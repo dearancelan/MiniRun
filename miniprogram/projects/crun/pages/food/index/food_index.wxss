@@ -1,0 +1,172 @@
+@import "../../../style/skin.wxss";
+
+.main {
+	padding: 0
+}
+
+.list {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 20rpx 20rpx 30rpx 20rpx;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	overflow: hidden;
+}
+
+.list .item {
+	padding: 22rpx 22rpx 40rpx;
+	display: flex;
+	border-radius: 14rpx;
+	margin-bottom: 20rpx;
+	position: relative;
+	background-color: #fff;
+	overflow: hidden;
+	flex-direction: column;
+	position: relative;
+}
+
+.list .item .mark-status {
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 22rpx;
+	padding: 10rpx 20rpx;
+	background-color: #f2f2f2;
+	border-top-right-radius: 10rpx;
+	border-bottom-left-radius: 20rpx;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	z-index: 9;
+}
+
+.list .item .mark-my {
+	position: absolute;
+	bottom: 10rpx;
+	right: 10rpx;
+	font-size: 24rpx;
+	z-index: 9;
+	color: #999;
+	opacity: .5;
+}
+
+
+
+.list .item .line-title {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	margin-bottom: 40rpx;
+}
+
+.list .item .line-title .left {
+	font-size: 36rpx;
+	font-weight: bold;
+	position: relative;
+	background-color: #f8f8f8; 
+}
+
+
+.list .item .line-title .left .price {
+	font-size: 24rpx;
+	top: 5rpx;
+	position: absolute;
+	color: var(--red);
+	opacity: .7;
+
+}
+
+.list .item .line-title .right {
+	font-size: 22rpx;
+	color: #999;
+	margin-left: 20rpx;
+}
+
+.list .item .line-address {
+	width: 100%;
+	display: flex;
+	margin-bottom: 16rpx;
+}
+
+.list .item .line2 {
+	width: calc((100% - 10rpx) / 2);
+	display: flex;
+	flex-direction: column;
+	background-color: #f8f8f8;
+	padding: 10rpx;
+	padding-bottom: 20rpx;
+	border-radius: 4rpx; 
+}
+
+.list .item .line2 .address .mm {
+	padding: 4rpx;
+	font-size: 22rpx;
+	margin-right: 10rpx;
+	border-radius: 20%;
+	width: 30rpx;
+	height: 30rpx;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.list .item .line2 .address { 
+	display: flex;
+	padding: 10rpx 0;
+	font-size: 26rpx;
+}
+
+.list .item .line2 .name {
+	width: 100%;
+	font-size: 24rpx;
+	color: #aaa;
+	padding-left: 50rpx;
+}
+
+.list .oprt {
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	padding: 5rpx 0;
+	margin-top: -10rpx;
+	margin-bottom: 50rpx;
+}
+
+
+.list .oprt>view {
+	padding: 8rpx 20rpx;
+	font-size: 24rpx;
+	background-color: #f2f2f2;
+	margin-right: 16rpx;
+	border-radius: 8rpx;
+}
+
+.list .oprt>view:last-child {
+	margin-right: 4rpx;
+}
+
+.list .oprt>view>text {
+	margin-right: 6rpx;
+}
+
+
+.post {
+	width: 100%;
+	position: fixed;
+	left: 30rpx;
+	bottom: 80rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+}
+
+.post>view {
+	z-index: 999;
+	font-size: 35rpx;
+	background-color: var(--projectColor);
+	color: var(--projectCompareColor);
+	padding: 16rpx 160rpx;
+	border-radius: 40rpx;
+}

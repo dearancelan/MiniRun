@@ -1,0 +1,8 @@
+{
+	"usingComponents": {
+		"cmpt-form-show": "/cmpts/public/form/form_show/form_show_cmpt",
+		"cmpt-picker-time": "/cmpts/public/picker_time/picker_time_cmpt"
+	},
+	"enablePullDownRefresh": true,
+	"navigationBarTitleText": "发布快递代取信息"
+}

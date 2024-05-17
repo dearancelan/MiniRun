@@ -1,0 +1,25 @@
+<template name="adminFormsDetailTpl">
+	<view class="admin-comm-list" wx:if="{{forms.length>0}}">
+		<view class="item">
+			<view class="info">
+				<view class="info-item info-item-solid" wx:key="key" wx:for="{{forms}}" wx:if="{{item.type!='line'}}">
+					<view class="title">{{item.title}}</view>
+					<view class="mao">：</view>
+					<view wx:if="{{item.type=='image'}}" class="content">
+						<image wx:for="{{item.val}}" wx:for-item="itm" wx:key="key1" bindtap="url" data-type="image" data-url="{{itm}}" src="{{itm}}" mode="aspectFill" class="loading" show-menu-by-longpress="{{true}}" />
+					</view>
+					<view wx:elif="{{item.type=='rows'}}" class="content" style="flex-direction: column;">
+						<text wx:for="{{item.val}}" wx:for-item="itm" wx:key="key1">
+						 <text>{{itm.title}} </text>
+						 <text wx:if="{{itm.val}}"> - {{itm.val}} </text>
+						</text>
+					</view>
+					<view wx:elif="{{item.type=='switch'}}" class="content">{{item.val===true?'是':'否'}} </view>
+					<view bind:tap="url" data-type="copy" data-url="{{item.val}}" wx:else class="content">{{item.val}} </view>
+				</view>
+			</view>
+
+		</view>
+
+	</view>
+</template>

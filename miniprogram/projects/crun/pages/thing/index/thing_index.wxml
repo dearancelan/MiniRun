@@ -1,0 +1,70 @@
+<view wx:if="{{!isLoad}}" class="margin-top load loading text-l load-project"></view>
+<block wx:if="{{isLoad}}">
+	<cmpt-comm-list id="thing-list" type="thing-list" search="{{search||''}}" _params="{{!search&&_params}}" _menus="{{sortMenus}}" _items="{{sortItems}}" route="thing/list" isTotalMenu="{{true}}" pulldownType="{{['modal','modal','modal']}}" sortMenusDefaultIndex="{{0}}" topBottom="120" placeholder="搜索" bind:list="bindCommListCmpt">
+
+		<view slot="searchEnd">
+			<button bindtap="bindMyTap" class="btn round bg-project text-white margin-right-s"><text class="icon-moreandroid margin-right-xxs"></text>我的</button>
+		</view>
+
+		<!-- List Begin -->
+		<view class="list">
+			<block wx:for="{{dataList.list}}" wx:key="k">
+				<view class="item shadow-project" bindtap="url" data-url="../../thing/detail/thing_detail?id={{item._id}}">
+ 
+
+					<view wx:if="{{item.THING_OBJ.level=='特急'}}" class="mark-level"><span style="border-top-color: var(--redLight);"><em style="color:var(--red)">特急</em></span></view>
+					<view wx:elif="{{item.THING_OBJ.level=='紧急'}}" class="mark-level"><span style="border-top-color: var(--orangeLight);"><em style="color:var(--orange)">紧急</em></span></view>
+					<view wx:elif="{{item.THING_OBJ.level=='一般'}}" class="mark-level"><span style="border-top-color: var(--yellowLight);"><em style="color:var(--yellow)">一般</em></span></view>
+
+					<view class="mark-my" wx:if="{{item.mypost}}">我的发布</view>
+					<view class="mark-my" wx:if="{{item.myaccept}}">我的接单</view>
+
+					<view class="mark-status bg-green light" wx:if="{{!item.myaccept&&item.status=='已完成'}}"><text class="icon-roundcheck"></text>{{item.status}}</view>
+					<view class="mark-status bg-green light" wx:elif="{{item.myaccept&&item.status=='已完成'}}">+我已完成</view>
+					<view class="mark-status bg-blue light" wx:elif="{{!item.myaccept&&item.status=='已接单'}}"><text class="icon-people"></text>{{item.status}}</view>
+					<view class="mark-status bg-blue light" wx:elif="{{item.myaccept&&item.status=='已接单'}}">+我已接单</view>
+					<view class="mark-status bg-grey light" wx:elif="{{item.status=='已过期'}}"><text class="icon-remind"></text>{{item.status}}</view>
+					<view class="mark-status bg-orange light" wx:else><text class="icon-activity"></text>{{item.status}}</view>
+
+					<view class="line-title">
+						<view class="left"><text class="price">¥</text><text>{{item.THING_OBJ.price}}</text></view>
+						<view class="right">{{item.end}}前有效</view>
+					</view> 
+					<view class="line2 text-cut">{{item.THING_OBJ.title}} </view>
+					<view class="line-post">
+						<image src="{{item.user.USER_PIC}}" class="left loading" mode="aspectFill" lazy-load="{{true}}" />
+						<view class="right">{{item.THING_OBJ.poster}}</view>
+					</view>
+
+				</view>
+				<view class="oprt" wx:if="{{ item.mypost||isAdmin}}">
+
+					<!--<view bindtap="url" data-url="../detail/thing_detail?id={{item._id}}"><text class="icon-attention"></text>详情</view>-->
+
+					<view class="bg-pink light" bindtap="bindStatusTap" data-id="{{item._id}}"><text class="icon-settings"></text>状态设定</view>
+
+					<view class="bg-blue light" bindtap="url" data-url="../edit/thing_edit?id={{item._id}}"><text class="icon-edit"></text>编辑</view>
+
+					<view class="bg-orange light" bindtap="bindDelTap" data-id="{{item._id}}"><text class="icon-delete"></text>删除</view>
+				</view>
+			</block>
+		</view>
+
+		<!-- List END -->
+
+		<!--load begin-->
+		<import src="../../../../../tpls/public/list_load_tpl.wxml" />
+		<template is="listLoadTpl" data="{{skin:'load-project',dataList}}" />
+		<!--load end-->
+
+
+
+	</cmpt-comm-list>
+
+	<!--  button Begin -->
+	<!--  button END -->
+
+	<view wx:if="{{!isAdmin}}" class="post safe-bottom">
+		<view capture-bind:tap="bindPostTap" class="inner shadow-project"><text class="icon-add margin-right-xs"></text>发布代办信息</view>
+	</view>
+</block>

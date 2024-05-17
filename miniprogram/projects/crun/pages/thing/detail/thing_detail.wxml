@@ -1,0 +1,110 @@
+<view wx:if="{{isLoad===null}}" class="margin-top load notexist text-l load-project"></view>
+<view wx:if="{{isLoad===false}}" class="margin-top load loading text-l load-project"></view>
+
+<block wx:if="{{isLoad}}">
+	<view class="main padding-project">
+
+		<!-- article content begin -->
+		<view class="article card-project shadow-project margin-top-xs">
+			<view class="mark-status bg-green light" wx:if="{{thing.status=='已完成'}}"><text class="icon-roundcheck"></text>{{thing.status}}</view>
+			<view class="mark-status bg-blue light" wx:elif="{{thing.status=='已接单'}}"><text class="icon-people"></text>{{thing.status}}</view>
+			<view class="mark-status bg-grey light" wx:elif="{{thing.status=='已过期'}}"><text class="icon-remind"></text>{{thing.status}}</view>
+			<view class="mark-status bg-orange light" wx:else><text class="icon-activity"></text>{{thing.status}}</view>
+
+			<view class="title"><text user-select="true">{{thing.THING_OBJ.title}}</text></view>
+			<view class="time">
+				<text><text class="icon-calendar margin-right-xxs" />{{thing.THING_ADD_TIME}}发布</text>
+				<text> {{thing.THING_CATE_NAME}} </text>
+				<text><text class="icon-attention margin-right-xxxs" />{{thing.THING_VIEW_CNT}}</text>
+			</view>
+
+			<view class="list">  
+				<!---time begin---->
+				<view wx:if="{{thing.status=='待接单'}}" class="flex-row j_c time-box card-project">
+					<view class="time-item">{{left_time_list[0]}}</view>天
+					<view class="time-item">{{left_time_list[1]}}</view>时
+					<view class="time-item">{{left_time_list[2]}}</view>分
+					<view class="time-item">{{left_time_list[3]}}</view>秒
+				</view>
+				<!---time END---->
+
+				<view class="item">
+					<view class="left">接单截止</view>
+					<view class="right text-red">{{thing.end2}}<text class="icon-remind margin-left-xs"></text></view>
+				</view>
+
+				<view class="item" wx:key="key" wx:for="{{thing.THING_FORMS}}" wx:if="{{item.type!='line'&&item.mark!='code'&&item.mark!='img'&&item.mark!='tel'}}">
+					<view class="left">{{item.title}}</view>
+					<view wx:if="{{item.type=='image'}}" class="right pics">
+						<image wx:for="{{item.val}}" wx:for-item="itm" wx:key="key1" bindtap="url" data-type="image" data-url="{{itm}}" src="{{itm}}" mode="aspectFill" class="loading" show-menu-by-longpress="{{true}}" />
+					</view>
+					<view wx:elif="{{item.type=='switch'}}" class="right">{{item.val===true?'是':'否'}} </view>
+					<view wx:else class="right" bind:tap="url" data-type="copy" data-url="{{item.val}}">{{item.val}} </view>
+				</view>
+
+				<block wx:if="{{ thing.myaccept || thing.mypost}}">
+					<view class="item" wx:key="key" wx:for="{{thing.THING_FORMS}}" wx:if="{{item.mark=='code'||item.mark=='img'||item.mark=='tel'}}">
+						<view class="left">{{item.title}}</view>
+						<view wx:if="{{item.type=='image'}}" class="right pics">
+							<image wx:for="{{item.val}}" wx:for-item="itm" wx:key="key1" bindtap="url" data-type="image" data-url="{{itm}}" src="{{itm}}" mode="aspectFill" class="loading" show-menu-by-longpress="{{true}}" />
+						</view>
+						<view wx:elif="{{item.type=='switch'}}" class="right">{{item.val===true?'是':'否'}} </view>
+						<view wx:else class="right" bind:tap="url" data-type="copy" data-url="{{item.val}}">{{item.val}} </view>
+					</view>
+				</block>
+
+				<block wx:if="{{ !thing.myaccept && !thing.mypost}}">
+					<view class="item" wx:key="key" wx:for="{{thing.THING_FORMS}}" wx:if="{{item.mark=='code'||item.mark=='img'||item.mark=='tel'}}">
+						<view class="left">{{item.title}}</view>
+						<view class="right text-grey">****** (仅接单人或发起人可见) </view>
+					</view>
+				</block>
+
+			</view>
+
+		</view>
+		<!-- article content end -->
+
+		<block wx:if="{{thing.THING_STATUS > 0 && thing.acceptUser}}">
+			<view class="accept-line">接单人信息</view>
+			<view class="article card-project shadow-project">
+				<block wx:if="{{thing.acceptUser && (thing.myaccept||thing.mypost)}}">
+					<view class="list">
+						<view class="item">
+							<view class="left">接单人：</view>
+							<view class="right">{{thing.acceptUser.USER_NAME}}</view>
+						</view>
+						<view class="item" bind:tap="url" data-url="{{thing.acceptUser.USER_MOBILE}}" data-type="phone">
+							<view class="left">接单人电话：</view>
+							<view class="right">{{thing.acceptUser.USER_MOBILE}} <text class="icon-phone"></text></view>
+						</view>
+
+						<view class="item" wx:if="{{thing.THING_STATUS>=1}}">
+							<view class="left">接单时间：</view>
+							<view class="right">{{thing.THING_ADD_TIME}}</view>
+						</view>
+
+						<view class="item" wx:if="{{thing.THING_STATUS==9}}">
+							<view class="left">完成时间：</view>
+							<view class="right">{{thing.THING_OVER_TIME}}</view>
+						</view>
+					</view>
+				</block>
+				<view wx:else class="text-s text-grey text-center">仅发起人或者接单人可见</view>
+			</view>
+
+		</block>
+
+
+	</view>
+
+	<cmpt-detail mode="mode2" topBtnShow="{{topBtnShow}}" tag="{{thing.myaccept&&thing.status=='已接单'?'我已接单':''}}" oid="{{thing._id}}" type="thing" cate="{{thing.THING_CATE_NAME}}" title="{{thing.THING_OBJ.title}}" cover="/projects/crun/images/poster/thing.png" qr="{{thing.THING_QR}}" desc="查看详情" bg="{{skin.PROJECT_COLOR}}">
+		<view class="bottom-line">
+			<view wx:if="{{thing.status=='已过期'}}" class="oprt bg-grey light">已过期</view>
+			<view wx:elif="{{thing.myaccept&&thing.status=='已接单'}}" bind:tap="bindCancelTap" class="oprt bg-grey light">取消该单</view>
+			<view wx:elif="{{thing.myaccept&&thing.status=='已完成'}}" class="oprt bg-green light">我已完成</view>
+			<view wx:elif="{{thing.status=='已完成'}}" class="oprt bg-grey light">已完成</view>
+			<view wx:else bindtap="bindAcceptTap" class="oprt">我要接单</view>
+		</view>
+	</cmpt-detail>
+</block>
